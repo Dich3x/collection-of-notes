@@ -1,8 +1,9 @@
-myName = "Igor"
-console.log(console.log(myName)) //console.log возвращает значение undefined   
-
-const a = function () {
-    console.log("hey")
+const objectA = {
+    city: "new york",
+    info: {
+        isPopular: true,
+        country: "USA"
+    }
 }
-
-a()
+delete objectA[""]
+console.log(objectA)

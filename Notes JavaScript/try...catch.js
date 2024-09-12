@@ -3,7 +3,7 @@ try {
     const six = 6;
     
 } catch (err) {
-    console.log(err.massage); //выводит сообщение с ошибкой
+    console.log(err.message); //выводит сообщение с ошибкой
 }
 console.log("Обработка кода идёт дальше"); //выполняется дальше
 

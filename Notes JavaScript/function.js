@@ -51,7 +51,7 @@ console.log(message); // hi
 
 
 
-//ПАРАМЕТРЫ
+// ПАРАМЕТРЫ
 
 function nameFunction(from, text) {
     console.log(from + ": " + text);
@@ -59,3 +59,16 @@ function nameFunction(from, text) {
 nameFunction("Игорь", "Привет"); // Игорь: Привет
 // при вызове функции мы указываем параметры "Игорь", "Привет", затем они передаются в функию в виде аргументов и используются в ней
 
+
+
+// ЗНАЧЕНИЯ ПО УМОЛЧАНИЮ
+function nameFunction(from, text) {
+    console.log(from + ": " + text);
+}
+nameFunction("Игорь"); // Игорь: undefined
+// если не указан параметр, то он по умолчанию становится undefined
+function nameFunction(from, text = "Привет") {
+    console.log(from + ": " + text);
+}
+nameFunction("Игорь"); // Игорь: Привет
+// в параметрах фунции можно зать параметр по умолчанию

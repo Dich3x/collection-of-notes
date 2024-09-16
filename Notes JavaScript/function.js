@@ -1,17 +1,61 @@
-//Функции
-
-//Объявление функции
-// function namefunction (arg) {parameter} //создание функции
-// namefunction(arg) //вызов функции / arg >> parameter / если arg не указан, то он заменяется на undefiend
-//var name = (parameter = parameterFuncrion()) // если не указан parameter, то вызывается функция
-
-//Локальные и внешние переменные
-// let massage = "external"; function namefunction (parameter) {let massage = "local"; console.log(massage)} //в функции можно объявлять внешнии и внутрении переменные, приоритет внутренней переменной всегда выше
-//function namefunction (parameter1, parameter2) {parameter1 = parameter1 + ":"; console.log(parameter1 + parameter2)}//внутрь функции можно передавать любые аргументы и изменять их
+// ФУНКЦИИ
 
 
 
+// ОБЪЯВЛЕНИЕ ФУНКЦИИ 
 
-// function namefunction (parameter) {console.log(parameter)} //funtion declaration statement
-// var name = function (parameter) {return console.log(typeof(parameter))} //funtion definition expression
-// var name = (parameter) => {return console.log(typeof(parameter))}//function namefunction (parameter1, parameter2) {parameter2 = parameter2 || "неизвестно"; console.log(parameter)} //с помощью оператора || можно заменить undefind
+// Синтаксис
+function nameFunction() {
+    // тело функции
+}
+//в начале идёт function, затем имя функции, затем параметры (не обязательны) и тело функции
+
+
+
+// ВЫЗОВ ФУНКЦИИ
+nameFunction()
+// для вызова фунции указываем её имя
+
+
+
+// ЛОКАЛЬНЫЕ, ВНЕШНИЕ И ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ
+
+// Локальные переменные
+function nameFunction() {
+    let message = "hello";
+    console.log(message);
+}
+nameFunction() // hello
+console.log(message) // error
+// переменные объявленные внутри функции, работают только внутри функции
+
+// Внешние переменные
+let message = "hello";
+function nameFunction() {
+    let message = "hi";
+    console.log(message);
+}
+nameFunction(); // hi
+console.log(message); // hello
+// внешние переменные не изменяются если, объявлять их внутри функции
+
+// Глобальные переменные
+let message = "hello";
+function nameFunction() {
+    message = "hi";
+    console.log(message)
+}
+nameFunction(); // hi
+console.log(message); // hi
+// глобальные переменные объявляются снаружи функции и могут переприсваивать значения внутри функции если их не объявлять
+
+
+
+//ПАРАМЕТРЫ
+
+function nameFunction(from, text) {
+    console.log(from + ": " + text);
+}
+nameFunction("Игорь", "Привет"); // Игорь: Привет
+// при вызове функции мы указываем параметры "Игорь", "Привет", затем они передаются в функию в виде аргументов и используются в ней
+

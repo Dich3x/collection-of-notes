@@ -1,6 +1,7 @@
-outer: for (let i = 0; i < 3; i++) {
-    for (let i = 0; i < 3; i++) {
-        console.log(i);
-        if (i === 1) break outer;
-    }
+let name = "Nana";
+function nema(arg) {
+    let name = "void";
+    console.log(name)
 }
+nema()
+console.log(name)

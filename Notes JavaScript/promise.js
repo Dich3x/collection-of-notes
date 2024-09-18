@@ -19,39 +19,39 @@ let promise = new Promise(function(resolve, reject) {
 
 
 
-// СИНТАКСИС ПОТРЕБИТЕЛЕЙ: THEN, CATCH
+// УНИВЕРСАЛЬНЫЙ МЕТОД ДЛЯ НАВЕШИВАНИЯ ОБРАБОТЧИКОВ
 
-// Then
-promise.then(
-    function(result) {/* обработает успешное выполнение*/},
-    function(error) {/* обработает ошибку */}
-);
+// Базовая запись
+promise.then(onFulfilled, onRejected)
+// onFulfilled - функция при resolve
+// onRejected - функция при reject
 
-// Catch
-let promise = new Promise((resolve, reject) => {
-    setTimeout(() => reject(new Error("Ошибка")), 1000);
-});
-promise.catch(console.log)
-
-
-
-// ПРИМЕР
+// Пример
 
 let promise = new Promise(function(resolve, reject) { // создаём объект promise
     setTimeout(() => resolve("result"), 1000); // переводит промис в состояние fulfilled с результатом "result"
 });
-promise.then( // promise.then навешивает обработчики на успешный результат или ошибку
-    result => console.log("Fulfiled: " + result), // result - аргумент resolve 
-    error => console.log("Rejected: " + error.message) // error - аргумент reject
+promise
+    .then( // promise.then навешивает обработчики на успешный результат или ошибку
+        result => console.log("Fulfiled: " + result), // result - аргумент resolve 
+        error => console.log("Rejected: " + error.message) // error - аргумент reject
 );
 // в итоге выведется fulfilled: result
+
+// Один обработчик
+promise.then(onFulfilled) // успешное выполнение
+promise.then(null, onRejected) // ошибка
+promise.catch(onRejected) // ошбка / catch(onRejected) алтернатива then(null, onRejected)
+
+
+
+// ОЧИСТКА FINALLY
+
 
 
 
 // ВЫЗОВ RESOLVE/REJECT СРАЗУ
-let promise = new Promise(function(resolve, reject) {
-    resolve(123); // мгновенно выдаст результат
-})
+let promise = new Promise(resolve => resolve("Готово"));
 
 
 
@@ -68,16 +68,7 @@ promise.then(
 
 
 
-// УНИВЕРСАЛЬНЫЙ МЕТОД ДЛЯ НАВЕШИВАНИЯ ОБРАБОТЧИКОВ
 
-promise.then(onFulfilled, onRejected)
-// onFulfilled - функция при resolve
-// onRejected - функция при reject
-
-// Один обработчик
-promise.then(onFulfilled) // успешное выполнение
-promise.then(null, onRejected) // ошибка
-promise.catch(onRejected) // ошбка / catch(onRejected) алтернатива then(null, onRejected)
 
 // Синхронный throw
 let p = new Promise((resolve, reject) => {
